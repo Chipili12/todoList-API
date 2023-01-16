@@ -14,7 +14,7 @@ li:hover button {
     visibility: visible;
 }
 
-#ileft {
+.chiquito {
     color: lightgrey;
     font-size: 12px;
 }

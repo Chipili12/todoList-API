@@ -77,6 +77,22 @@ const Home = () => {
 				console.log(error);
 			});
 	}
+	function botonborrar() {
+		if (Lista.length <= 1) {
+			return;
+		  }
+		  setLista([Lista[0]]);
+		  fetch('https://assets.breatheco.de/apis/fake/todos/user/cositoxd', {
+			method: "PUT",
+			body: JSON.stringify([{ label: Lista[0], done: false }]),
+			headers: {
+			  "Content-Type": "application/json"
+			}
+		  })
+		  .catch(error => {
+			console.log(error);
+		  });
+		}
 	function placeholda(Lista) {
 		if (Lista.length > 0) {
 			return ""
@@ -123,7 +139,8 @@ const Home = () => {
 							))}
 						</ol>
 					</div>
-					<p id="ileft" className="ps-2">{Lista.length} Item left</p>
+					<button className="btn ms-auto chiquito" onClick={() => botonborrar()}><strong>Borrar todo</strong></button>
+					<p className="ps-2 chiquito">{Lista.length} Item left</p>
 				</div>
 			</div>
 		</div>
